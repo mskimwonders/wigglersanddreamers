@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kim Machnik - Supporting Neurodiverse Math Learners</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        
+        header {
+            background-color: #fff;
+            border-bottom: 3px solid #3498db;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        nav {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #3498db;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        h3 {
+            color: #34495e;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+        
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .workshop-card {
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            background: #fafbfc;
+        }
+        
+        .workshop-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .workshop-card h3 {
+            color: #3498db;
+            margin-top: 0;
+            font-size: 1.15rem;
+        }
+        
+        .resources-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .resources-list li {
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: #f8f9fa;
+            border-left: 3px solid #3498db;
+            border-radius: 4px;
+        }
+        
+        .resources-list a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .resources-list a:hover {
+            text-decoration: underline;
+        }
+        
+        .bio {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .bio p {
+            margin-bottom: 1rem;
+        }
+        
+        .credentials {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .credentials ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .credentials li {
+            margin: 0.5rem 0;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 1rem;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Lesson Database Styles */
+        .upload-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            border: 2px dashed #cbd5e0;
+            display: none;
+        }
+        
+        .upload-section.visible {
+            display: block;
+        }
+        
+        .admin-toggle {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .admin-toggle button {
+            background: none;
+            border: none;
+            color: #95a5a6;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .admin-toggle button:hover {
+            color: #7f8c8d;
+        }
+        
+        .password-prompt {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-width: 400px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+        
+        .password-prompt input {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .password-prompt .btn {
+            width: 100%;
+        }
+        
+        .upload-form {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.6rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .tag-input-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.6rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            min-height: 45px;
+            background: white;
+        }
+        
+        .tag {
+            background: #3498db;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .tag button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.1rem;
+            line-height: 1;
+            padding: 0;
+        }
+        
+        .tag-input {
+            border: none;
+            outline: none;
+            flex: 1;
+            min-width: 100px;
+            font-family: inherit;
+        }
+        
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        .btn-secondary {
+            background: #95a5a6;
+        }
+        
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+        
+        .search-filters {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .lesson-grid {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .lesson-card {
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            padding: 1.5rem;
+            background: #fafbfc;
+            transition: all 0.3s;
+        }
+        
+        .lesson-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .lesson-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.8rem;
+        }
+        
+        .lesson-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0;
+        }
+        
+        .lesson-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .meta-tag {
+            background: #e8f4fd;
+            color: #2c3e50;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .lesson-description {
+            color: #5a6c7d;
+            margin-bottom: 0.8rem;
+        }
+        
+        .lesson-standards {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .lesson-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-small {
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .btn-delete {
+            background: #e74c3c;
+        }
+        
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+        }
+        
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .form-row, .filter-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Kim Machnik</div>
+            <ul>
+                <li><a href="#resources">Workshop Resources</a></li>
+                <li><a href="#references">References</a></li>
+                <li><a href="#lessons">Lesson Library</a></li>
+                <li><a href="#workshops">Related Workshops</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Math for the Wigglers & Dreamers</h1>
+        <p>Supporting neurodiverse learners in the math classroom through universal design and inclusive practices</p>
+    </div>
+
+    <div class="container">
+        <section id="resources">
+            <h2>Workshop Resources</h2>
+            <p>Thank you for attending the workshop! Here are the materials and resources from our session:</p>
+            
+            <ul class="resources-list">
+                <li>📊 <a href="#" onclick="alert('Link to presentation slides will be added here'); return false;">Workshop Slide Deck</a> - Full presentation with design principles and strategies</li>
+            </ul>
+            
+            <p style="margin-top: 1.5rem;"><em>Looking for lesson plans and math games? Check out the <a href="#lessons" style="color: #3498db; text-decoration: none; font-weight: 500;">Lesson Library</a> below where you can search by grade level, topic, and standard.</em></p>
+        </section>
+
+        <section id="references">
+            <h2>References & Further Reading</h2>
+            <p>Accessible resources and articles to learn more about the topics covered in the workshop:</p>
+            
+            <h3>ADHD Prevalence & Statistics</h3>
+            <ul class="resources-list">
+                <li>📊 <a href="https://www.cdc.gov/ncbddd/adhd/data.html" target="_blank">CDC: Data and Statistics on ADHD</a> - Approximately 7 million (11.4%) U.S. children aged 3–17 years have ever been diagnosed with ADHD as of 2022</li>
+            </ul>
+
+            <h3>Executive Function & Inhibitory Control</h3>
+            <ul class="resources-list">
+                <li>📝 <a href="https://www.foothillsacademy.org/community/articles/inhibitory-control-adhd" target="_blank">Foothills Academy: Inhibitory Control and ADHD</a> - Overview of inhibitory control challenges in ADHD</li>
+            </ul>
+
+            <h3>Rejection Sensitive Dysphoria</h3>
+            <ul class="resources-list">
+                <li>💙 <a href="https://www.additudemag.com/rejection-sensitive-dysphoria-and-adhd/" target="_blank">ADDitude Magazine: Rejection Sensitive Dysphoria (RSD)</a> - Clinical evidence suggests up to 99% of individuals with ADHD experience RSD; approximately one-third report it as the most impairing aspect of ADHD</li>
+            </ul>
+
+            <h3>ADHD Strengths & Advantages</h3>
+            <ul class="resources-list">
+                <li>✨ <a href="https://www.opencolleges.edu.au/blogs/articles/5-cognitive-advantages-of-people-with-adhd" target="_blank">Open Colleges: 5 Cognitive Advantages of People with ADHD</a> - Overview of cognitive strengths associated with ADHD</li>
+            </ul>
+
+            <h3>Dopamine & Learning</h3>
+            <ul class="resources-list">
+                <li>🧠 <strong>What does dopamine mean?</strong> (Nature Neuroscience) - Functionally, dopamine release is a signal to repeat a task or experience</li>
+                <li>🧠 <strong>How does dopamine regulate both learning and motivation?</strong> (ScienceDaily) - The release of dopamine is in a reinforcing feedback loop with learning and motivation. Learning releases dopamine, which motivates more learning</li>
+                <li>🧠 <strong>UConn Researcher: Dopamine Not About Pleasure (Anymore)</strong> - Higher dopamine levels make us more willing to overcome obstacles to reach rewards</li>
+                <li>🧠 <strong>How Dopamine Shapes Learning: Unveiling the Brain's Secrets</strong> - Dopamine improves focus, working memory, consolidation of memory, and curiosity. Elements that increase dopamine include high engagement/interest tasks, games, challenge, individualization, story, recognition and feedback, and social connection</li>
+                <li>🧠 <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2626918/" target="_blank">Attention-deficit-hyperactivity disorder and reward deficiency syndrome</a> - People with ADHD have a different "brain reward cascade" system which means they have a harder time experiencing the benefits of dopamine</li>
+            </ul>
+
+            <h3>Anxiety & Cognitive Load</h3>
+            <ul class="resources-list">
+                <li>🧘 <strong>Cognitive Reappraisal: The Bridge between Cognitive Load and Emotion</strong> - We have limited working memory capacity and emotions, particularly strong ones, can use up that capacity, leaving less available for fluid reasoning. However, the mental framing of those emotions has a significant influence on how emotions affect cognitive load. Mindsets that increase one's sense of self-efficacy can free up cognitive load</li>
+            </ul>
+
+            <h3>ADHD Comorbidity & Related Topics</h3>
+            <ul class="resources-list">
+                <li>📖 <a href="https://www.medicalnewstoday.com/articles/dyslexia-and-adhd#link" target="_blank">Medical News Today: ADHD and Dyslexia</a> - Overview of the connection between ADHD and dyslexia</li>
+                <li>📖 <a href="https://dyslexia.yale.edu/resources/educators/instruction/math-memory-challenges/" target="_blank">Yale Center for Dyslexia & Creativity: Math Memory Challenges</a> - Working memory challenges impact mathematical learning in students with dyslexia and ADHD</li>
+            </ul>
+
+            <p style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-left: 4px solid #3498db; border-radius: 4px;">
+                <strong>Looking for peer-reviewed research?</strong> See the <a href="#primary-research" style="color: #3498db; text-decoration: none; font-weight: 500;">Primary Research section</a> below for full academic citations.
+            </p>
+        </section>
+
+        <section id="primary-research">
+            <h2>Primary Research Citations</h2>
+            <p>Peer-reviewed research articles supporting the workshop content:</p>
+            
+            <h3>ADHD Prevalence & Demographics</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.1080/15374416.2024.2335625" target="_blank">Danielson, M. L., et al. (2024)</a>. ADHD Prevalence Among U.S. Children and Adolescents in 2022. <em>Journal of Clinical Child & Adolescent Psychology</em>, 53(3), 343-360. — Reports 11.4% of U.S. children aged 3-17 have ever been diagnosed with ADHD</li>
+            </ul>
+
+            <h3>Racial Disparities in ADHD Diagnosis & Treatment</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.1542/peds.2012-2390" target="_blank">Morgan, P. L., et al. (2013)</a>. Racial and ethnic disparities in ADHD diagnosis from kindergarten to eighth grade. <em>Pediatrics</em>, 132(1), 85-93</li>
+                <li><a href="https://doi.org/10.1542/peds.2016-0407" target="_blank">Coker, T. R., et al. (2016)</a>. Racial and Ethnic Disparities in ADHD Diagnosis and Treatment. <em>Pediatrics</em>, 138(3), e20160407</li>
+                <li><a href="https://doi.org/10.1001/jamanetworkopen.2021.0555" target="_blank">Morgan, P. L., et al. (2021)</a>. Racial Disparities in Diagnosis of ADHD in a US National Birth Cohort. <em>JAMA Network Open</em>, 4(3), e210555</li>
+            </ul>
+
+            <h3>ADHD and Academic Achievement</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.1093/jpepsy/jsl054" target="_blank">Loe, I. M., & Feldman, H. M. (2007)</a>. Academic and Educational Outcomes of Children With ADHD. <em>Journal of Pediatric Psychology</em>, 32(6), 643-654</li>
+                <li><a href="https://doi.org/10.1080/15374416.2017.1330802" target="_blank">Kofler, M. J., et al. (2019)</a>. Working Memory and Math Skills in Children with and without ADHD. <em>Journal of Clinical Child & Adolescent Psychology</em>, 48(2), 199-212</li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6541488/" target="_blank">Jangmo, A., et al. (2019)</a>. ADHD, School Performance, and Effect of Medication. <em>Journal of the American Academy of Child & Adolescent Psychiatry</em>, 58(4), 423-432</li>
+            </ul>
+
+            <h3>Executive Function & Working Memory</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.1177/1087054715589360" target="_blank">Simone, A. N., et al. (2018)</a>. Working memory and academic achievement in children with ADHD. <em>Journal of Attention Disorders</em>, 22(4), 339-347</li>
+            </ul>
+
+            <h3>Rejection Sensitive Dysphoria & Emotional Regulation</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.1111/jcpp.12899" target="_blank">Faraone, S. V., et al. (2019)</a>. Emotional dysregulation in ADHD. <em>Journal of Child Psychology and Psychiatry</em>, 60(2), 133-150</li>
+                <li><a href="https://doi.org/10.1037/pha0000283" target="_blank">Babinski, D. E., et al. (2020)</a>. Sensitivity to peer feedback in young adults with ADHD. <em>Experimental and Clinical Psychopharmacology</em>, 28(3), 347-358</li>
+                <li><a href="https://pubmed.ncbi.nlm.nih.gov/25708692/" target="_blank">López-Martín, S., et al. (2015)</a>. Emotional response inhibition in children with ADHD. <em>Psychological Medicine</em>, 45(10), 2057-71</li>
+            </ul>
+
+            <h3>ADHD Strengths: Creativity & Divergent Thinking</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.1016/j.paid.2005.11.007" target="_blank">White, H. A., & Shah, P. (2006)</a>. Uninhibited imaginations: Creativity in adults with ADHD. <em>Personality and Individual Differences</em>, 40(6), 1121-1131</li>
+                <li><a href="https://doi.org/10.1016/j.paid.2010.12.015" target="_blank">White, H. A., & Shah, P. (2011)</a>. Creative style and achievement in adults with ADHD. <em>Personality and Individual Differences</em>, 50(5), 673-677</li>
+                <li><a href="https://doi.org/10.1016/j.neubiorev.2020.09.029" target="_blank">Hoogman, M., et al. (2020)</a>. Creativity and ADHD: A review. <em>Neuroscience & Biobehavioral Reviews</em>, 119, 66-85</li>
+                <li><a href="https://doi.org/10.1177/1087054716656394" target="_blank">Boot, N., et al. (2020)</a>. Creativity in ADHD: Goal-Directed Motivation and Domain Specificity. <em>Journal of Attention Disorders</em>, 24(13), 1857-1866</li>
+                <li><a href="https://doi.org/10.3389/fpsyg.2022.856002" target="_blank">Rosén, J., et al. (2022)</a>. Creative Thinking and ADHD. <em>Frontiers in Psychology</em>, 13, 856002</li>
+            </ul>
+
+            <h3>ADHD Strengths: Hyperfocus</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.1007/s12402-018-0272-y" target="_blank">Hupfeld, K. E., et al. (2019)</a>. Living "in the zone": hyperfocus in adult ADHD. <em>ADHD Attention Deficit and Hyperactivity Disorders</em>, 11(2), 191-208</li>
+                <li><a href="https://doi.org/10.1016/j.ridd.2016.09.016" target="_blank">Ozel-Kizil, E. T., et al. (2016)</a>. Hyperfocusing as a dimension of adult ADHD. <em>Research in Developmental Disabilities</em>, 59, 351-358</li>
+                <li><a href="https://doi.org/10.1016/j.ridd.2020.103789" target="_blank">Groen, Y., et al. (2020)</a>. Testing the relation between ADHD and hyperfocus experiences. <em>Research in Developmental Disabilities</em>, 107, 103789</li>
+                <li><a href="https://doi.org/10.1038/s41598-024-66277-4" target="_blank">Zhang, H., et al. (2023)</a>. Validation of the dispositional adult hyperfocus questionnaire. <em>Scientific Reports</em>, 14, 16737</li>
+            </ul>
+
+            <h3>ADHD Strengths: Novelty Seeking & Openness to New Ideas</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.1093/brain/awy048" target="_blank">Sethi, A., et al. (2018)</a>. A neurocomputational account of reward and novelty processing in ADHD. <em>Brain</em>, 141(5), 1545-1557</li>
+                <li><a href="https://doi.org/10.1016/j.psychres.2015.02.014" target="_blank">Donfrancesco, R., et al. (2015)</a>. Novelty Seeking dimension as a core feature of ADHD. <em>Psychiatry Research</em>, 227(2-3), 273-277</li>
+            </ul>
+
+            <h3>Dopamine, Reward, & Motivation</h3>
+            <ul class="resources-list">
+                <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2626918/" target="_blank">Blum, K., et al. (2008)</a>. ADHD and reward deficiency syndrome. <em>Neuropsychiatric Disease and Treatment</em>, 4(5), 893-918</li>
+            </ul>
+
+            <h3>Anxiety, Cognitive Load & Working Memory</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.3389/fpsyg.2016.01614" target="_blank">Moran, T. P. (2016)</a>. Anxiety and Stress With Working Memory Performance. <em>Frontiers in Psychology</em>, 7, 1614</li>
+                <li><a href="https://doi.org/10.3389/fnhum.2013.00093" target="_blank">Vytal, K., et al. (2012)</a>. The interplay between anxiety and cognition. <em>Frontiers in Human Neuroscience</em>, 6, 93</li>
+                <li><a href="https://doi.org/10.1080/135467800393911" target="_blank">Tohill, J. M., & Holyoak, K. J. (2000)</a>. The impact of anxiety on analogical reasoning. <em>Thinking & Reasoning</em>, 6(1), 27–40</li>
+                <li>Ramirez, G., & Beilock, S. L. (2011). Working Memory, Math Anxiety, and Performance. <em>Journal of Experimental Psychology: General</em>, 140(2), 211-224</li>
+            </ul>
+
+            <h3>Learning Modalities & Active Learning</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.1073/pnas.1821936116" target="_blank">Deslauriers, L., et al. (2019)</a>. The neuroscience of active learning and direct instruction. <em>Proceedings of the National Academy of Sciences</em>, 116(39), 19251-19257</li>
+            </ul>
+
+            <h3>COVID-19 Impact on ADHD</h3>
+            <ul class="resources-list">
+                <li><a href="https://doi.org/10.1016/j.jpsychires.2023.01.006" target="_blank">Rogers, M. A., & MacLean, J. (2023)</a>. ADHD Symptoms Increased During the Covid-19 Pandemic: A Meta-Analysis. <em>Journal of Psychiatric Research</em>, 158, 252-259</li>
+            </ul>
+        </section>
+
+        <section id="lessons">
+            <h2>Lesson & Game Library</h2>
+            <p>A searchable collection of math lessons and games designed with neurodiversity in mind. Filter by grade level, topic, or standard to find what you need.</p>
+            
+            <div class="admin-toggle">
+                <button onclick="showPasswordPrompt()">Admin</button>
+            </div>
+            
+            <div id="passwordPrompt" style="display: none;">
+                <div class="password-prompt">
+                    <h3 style="margin-top: 0;">Admin Access</h3>
+                    <p>Enter password to upload lessons:</p>
+                    <input type="password" id="adminPassword" placeholder="Password">
+                    <button class="btn" onclick="checkPassword()">Unlock</button>
+                    <button class="btn btn-secondary" onclick="hidePasswordPrompt()" style="margin-top: 0.5rem;">Cancel</button>
+                </div>
+            </div>
+            
+            <div class="upload-section" id="uploadSection">
+                <h3 style="margin-top: 0;">Add a New Lesson or Game</h3>
+                <form class="upload-form" id="uploadForm">
+                    <div class="form-group">
+                        <label for="lessonTitle">Title *</label>
+                        <input type="text" id="lessonTitle" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lessonDescription">Description</label>
+                        <textarea id="lessonDescription" placeholder="Brief description of the lesson or game"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gradeLevel">Grade Level *</label>
+                            <select id="gradeLevel" required>
+                                <option value="">Select grade level</option>
+                                <option value="PK">Pre-K</option>
+                                <option value="K">Kindergarten</option>
+                                <option value="1">Grade 1</option>
+                                <option value="2">Grade 2</option>
+                                <option value="3">Grade 3</option>
+                                <option value="4">Grade 4</option>
+                                <option value="5">Grade 5</option>
+                                <option value="6">Grade 6</option>
+                                <option value="7">Grade 7</option>
+                                <option value="8">Grade 8</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="topic">Topic *</label>
+                            <input type="text" id="topic" placeholder="e.g., Fractions, Geometry" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Standards (press Enter to add each one)</label>
+                        <div class="tag-input-container" id="standardsContainer">
+                            <input type="text" class="tag-input" id="standardInput" placeholder="e.g., 3.NF.A.1">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lessonFile">PDF File *</label>
+                        <input type="file" id="lessonFile" accept=".pdf" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Add to Library</button>
+                </form>
+            </div>
+            
+            <div class="search-filters">
+                <input type="text" class="search-box" id="searchBox" placeholder="Search lessons and games...">
+                
+                <div class="filter-row" style="margin-top: 1rem;">
+                    <select id="filterGrade" class="search-box">
+                        <option value="">All Grade Levels</option>
+                        <option value="PK">Pre-K</option>
+                        <option value="K">Kindergarten</option>
+                        <option value="1">Grade 1</option>
+                        <option value="2">Grade 2</option>
+                        <option value="3">Grade 3</option>
+                        <option value="4">Grade 4</option>
+                        <option value="5">Grade 5</option>
+                        <option value="6">Grade 6</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                    </select>
+                    
+                    <input type="text" id="filterTopic" class="search-box" placeholder="Filter by topic...">
+                    
+                    <input type="text" id="filterStandard" class="search-box" placeholder="Filter by standard...">
+                </div>
+            </div>
+            
+            <div class="lesson-grid" id="lessonGrid">
+                <div class="empty-state">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <p>No lessons yet. Add your first lesson or game above!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="workshops">
+            <h2>Related Workshops</h2>
+            <p>If you found this workshop helpful, here are some related professional development sessions that go deeper into specific topics. These can be customized for your school or district's needs.</p>
+            
+            <div class="workshop-grid">
+                <div class="workshop-card">
+                    <h3>Executive Function Support Across STEM</h3>
+                    <p>Practical strategies for reducing working memory demands and supporting organization in science, math, and engineering tasks.</p>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3>High Quality Instructional Materials and ADHD</h3>
+                    <p>Why even a great curriculum might not reach learners with ADHD, and how to adjust HQIM to support executive function and engagement.</p>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3>Rejection Sensitive Dysphoria in the Math Classroom</h3>
+                    <p>Understanding RSD—what it is, how to spot its effects, and how to create classroom environments and instruction that avoid triggering it.</p>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3>Test Prep Without Compromising Your Pedagogy</h3>
+                    <p>How to prepare students for standardized tests while protecting their mathematical identity and maintaining teaching practices you believe in.</p>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3>Custom PD</h3>
+                    <p>Have a specific need or challenge? Let's design professional development that addresses your team's questions and context.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Kim</h2>
+            <div class="bio">
+                <div>
+                    <p>I'm a PK-8 STEM Coordinator at Prospect Hill Academy Charter School, a diverse urban district where 75% of students are multilingual learners. My work focuses on creating inclusive, rigorous STEM experiences that honor the full range of how students learn and think.</p>
+                    
+                    <p>Before this role, I worked at Acera School, where most students were twice exceptional with high rates of ADHD and autism. That experience fundamentally shaped how I think about curriculum design, assessment, and what it means to position all students as mathematicians and scientists.</p>
+                    
+                    <p style="background: #f8f9fa; padding: 1.5rem; border-radius: 6px; border-left: 4px solid #667eea; font-style: italic;">School should be a place where every kind of person—with every kind of mind—can belong and thrive. Learning is the most marvelous kind of fun, and kids' brains want nothing more than to love, be loved, and to learn. If kids don't want to do those things at school, it's school that's the problem, not them.</p>
+                    
+                    <p>I'm passionate about making math education more playful, accessible, and affirming—especially for students whose brains work differently. The strategies I share aren't just accommodations; they're often better pedagogy for everyone.</p>
+                </div>
+                
+                <div class="credentials">
+                    <strong>Background & Training:</strong>
+                    <ul>
+                        <li>PK-8 STEM Coordinator, Prospect Hill Academy Charter School</li>
+                        <li>Former educator at Acera School (twice-exceptional learners)</li>
+                        <li>Training with Cognitive Connections, Tufts ASPIRE, and Chris Woodin of Landmark School</li>
+                        <li>Deep experience with neurodiversity, multilingual learners, and teacher mentoring</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Let's Connect</h2>
+            <p>I'm always happy to talk with fellow educators about inclusive STEM practices, neurodiversity-affirming approaches, or how we can support each other's work.</p>
+            
+            <div class="contact-info">
+                <p><strong>Get in touch:</strong></p>
+                <p>
+                    <a href="mailto:kmachnik@phacs.org">✉️ kmachnik@phacs.org</a>
+                    <a href="https://linkedin.com/in/kimmachnik" target="_blank">💼 LinkedIn</a>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Kim Machnik | Supporting neurodiverse learners in STEM</p>
+    </footer>
+
+    <script>
+        // Admin password (change this to your own password!)
+        const ADMIN_PASSWORD = 'wigglers2024';
+        
+        // Show/hide password prompt
+        function showPasswordPrompt() {
+            document.getElementById('passwordPrompt').style.display = 'block';
+            document.getElementById('adminPassword').focus();
+        }
+        
+        function hidePasswordPrompt() {
+            document.getElementById('passwordPrompt').style.display = 'none';
+            document.getElementById('adminPassword').value = '';
+        }
+        
+        // Check password and show upload form
+        function checkPassword() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('uploadSection').classList.add('visible');
+                hidePasswordPrompt();
+                alert('Upload form unlocked! Scroll down to add lessons.');
+            } else {
+                alert('Incorrect password');
+                document.getElementById('adminPassword').value = '';
+            }
+        }
+        
+        // Allow Enter key to submit password
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('adminPassword');
+            if (passwordInput) {
+                passwordInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkPassword();
+                    }
+                });
+            }
+        });
+        
+        // Lesson database storage
+        let lessons = [];
+        
+        // Load lessons from storage (SHARED - everyone sees the same library)
+        async function loadLessons() {
+            try {
+                const result = await window.storage.get('math-lessons', true);
+                if (result && result.value) {
+                    lessons = JSON.parse(result.value);
+                    renderLessons();
+                }
+            } catch (error) {
+                console.log('No existing lessons found');
+            }
+        }
+        
+        // Save lessons to storage (SHARED - everyone sees the same library)
+        async function saveLessons() {
+            try {
+                await window.storage.set('math-lessons', JSON.stringify(lessons), true);
+            } catch (error) {
+                console.error('Error saving lessons:', error);
+                alert('There was an error saving. Please try again.');
+            }
+        }
+        
+        // Standards tag functionality
+        const standardsContainer = document.getElementById('standardsContainer');
+        const standardInput = document.getElementById('standardInput');
+        let standards = [];
+        
+        standardInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const value = this.value.trim();
+                if (value && !standards.includes(value)) {
+                    standards.push(value);
+                    addStandardTag(value);
+                    this.value = '';
+                }
+            }
+        });
+        
+        function addStandardTag(standard) {
+            const tag = document.createElement('div');
+            tag.className = 'tag';
+            tag.innerHTML = `
+                ${standard}
+                <button type="button" onclick="removeStandard('${standard}')">&times;</button>
+            `;
+            standardsContainer.insertBefore(tag, standardInput);
+        }
+        
+        function removeStandard(standard) {
+            standards = standards.filter(s => s !== standard);
+            renderStandardTags();
+        }
+        
+        function renderStandardTags() {
+            const tags = standardsContainer.querySelectorAll('.tag');
+            tags.forEach(tag => tag.remove());
+            standards.forEach(standard => addStandardTag(standard));
+        }
+        
+        // Form submission
+        document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('lessonFile');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please select a PDF file');
+                return;
+            }
+            
+            // Read file as base64
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const lesson = {
+                    id: Date.now(),
+                    title: document.getElementById('lessonTitle').value,
+                    description: document.getElementById('lessonDescription').value,
+                    gradeLevel: document.getElementById('gradeLevel').value,
+                    topic: document.getElementById('topic').value,
+                    standards: [...standards],
+                    fileName: file.name,
+                    fileData: e.target.result
+                };
+                
+                lessons.push(lesson);
+                await saveLessons();
+                renderLessons();
+                
+                // Reset form
+                e.target.reset();
+                standards = [];
+                renderStandardTags();
+                
+                alert('Lesson added successfully!');
+            };
+            
+            reader.readAsDataURL(file);
+        });
+        
+        // Render lessons
+        function renderLessons() {
+            const grid = document.getElementById('lessonGrid');
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            const gradeFilter = document.getElementById('filterGrade').value;
+            const topicFilter = document.getElementById('filterTopic').value.toLowerCase();
+            const standardFilter = document.getElementById('filterStandard').value.toLowerCase();
+            
+            let filtered = lessons.filter(lesson => {
+                const matchesSearch = !searchTerm || 
+                    lesson.title.toLowerCase().includes(searchTerm) ||
+                    lesson.description.toLowerCase().includes(searchTerm) ||
+                    lesson.topic.toLowerCase().includes(searchTerm);
+                
+                const matchesGrade = !gradeFilter || lesson.gradeLevel === gradeFilter;
+                const matchesTopic = !topicFilter || lesson.topic.toLowerCase().includes(topicFilter);
+                const matchesStandard = !standardFilter || 
+                    lesson.standards.some(s => s.toLowerCase().includes(standardFilter));
+                
+                return matchesSearch && matchesGrade && matchesTopic && matchesStandard;
+            });
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <p>No lessons match your search criteria.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = filtered.map(lesson => `
+                <div class="lesson-card">
+                    <div class="lesson-header">
+                        <h3 class="lesson-title">${lesson.title}</h3>
+                    </div>
+                    <div class="lesson-meta">
+                        <span class="meta-tag">Grade ${lesson.gradeLevel}</span>
+                        <span class="meta-tag">${lesson.topic}</span>
+                    </div>
+                    ${lesson.description ? `<p class="lesson-description">${lesson.description}</p>` : ''}
+                    ${lesson.standards.length > 0 ? `
+                        <p class="lesson-standards">Standards: ${lesson.standards.join(', ')}</p>
+                    ` : ''}
+                    <div class="lesson-actions">
+                        <button class="btn btn-small" onclick="downloadLesson(${lesson.id})">📥 Download PDF</button>
+                        <button class="btn btn-small btn-delete" onclick="deleteLesson(${lesson.id})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Download lesson
+        function downloadLesson(id) {
+            const lesson = lessons.find(l => l.id === id);
+            if (lesson) {
+                const link = document.createElement('a');
+                link.href = lesson.fileData;
+                link.download = lesson.fileName;
+                link.click();
+            }
+        }
+        
+        // Delete lesson
+        async function deleteLesson(id) {
+            if (confirm('Are you sure you want to delete this lesson?')) {
+                lessons = lessons.filter(l => l.id !== id);
+                await saveLessons();
+                renderLessons();
+            }
+        }
+        
+        // Search and filter
+        document.getElementById('searchBox').addEventListener('input', renderLessons);
+        document.getElementById('filterGrade').addEventListener('change', renderLessons);
+        document.getElementById('filterTopic').addEventListener('input', renderLessons);
+        document.getElementById('filterStandard').addEventListener('input', renderLessons);
+        
+        // Load lessons on page load
+        loadLessons();
+    </script>
+</body>
+</html>
